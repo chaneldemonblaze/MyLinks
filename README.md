@@ -9,7 +9,7 @@ A gothic-style link-in-bio page with a shader background and age gate.
 - Age verification gate (18+)
 - Custom animated shader background
 - Responsive design for mobile and desktop
-- Links to social media: OnlyFans, Instagram, TikTok
+- Links to social media: Instagram, TikTok, etc.
 
 ## How to Use
 1. Clone or download this repository.
