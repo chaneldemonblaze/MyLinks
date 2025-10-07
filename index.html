@@ -3,138 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Links</title>
+  <title>ChanelDemonBlaze | Enter</title>
 
-  <!-- Gothic Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "New Rocker", cursive;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "New Rocker", cursive; }
 
     body, html {
-      height: 100%;
-      width: 100%;
+      height: 100%; width: 100%;
+      color: #fff; text-align: center;
       overflow: hidden;
-      color: #fff;
-      text-align: center;
     }
 
-    /* Shader background */
     shader-art {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 0;
       display: block;
     }
 
-    /* Overlay for age gate + content */
     .overlay {
       position: relative;
       z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-      padding: 20px;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      height: 100vh;
     }
 
-    /* Age Gate */
     .age-gate {
-      background: rgba(0,0,0,0.6);
-      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.6);
       border: 2px solid red;
       border-radius: 10px;
-      max-width: 400px;
-      width: 90%;
-      transition: opacity 1s ease;
-    }
-    .age-gate p{
-        margin-bottom: 20px;
-    }
-    .age-gate button{
-        margin: 15px 10px 0;
-    }
-    .age-gate.fade-out {
-      opacity: 0;
+      padding: 40px 20px;
+      max-width: 400px; width: 90%;
     }
 
-    /* Main Content (hidden at start) */
-    #main-content {
-      display: none;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    #main-content.show {
-      display: block;
-      opacity: 1;
-    }
+    .age-gate h1 { font-size: 2rem; margin-bottom: 20px; text-shadow: 0 0 10px red; }
+    .age-gate p { margin-bottom: 30px; }
 
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid red;
-      margin-bottom: 20px;
-      object-fit: cover;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px red;
-    }
-
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .links a, .age-gate button {
+    .age-gate button {
       text-decoration: none;
       color: #fff;
       border: 2px solid red;
       padding: 10px 20px;
       font-size: 1.2rem;
       border-radius: 6px;
-      transition: all 0.3s ease;
+      margin: 10px;
       background: rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
     }
 
-    .links a:hover, .age-gate button:hover {
+    .age-gate button:hover {
       background: red;
       color: black;
       box-shadow: 0 0 15px red;
       cursor: pointer;
     }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-      .profile-pic {
-        width: 120px;
-        height: 120px;
-      }
-      .links a, .age-gate button {
-        font-size: 1rem;
-        padding: 8px 15px;
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Shader background -->
+
+  <!-- ShaderArt Background -->
   <shader-art autoplay dpr="1">
     <script type="buffer" name="position" data-size="2">
       [-1, 1, -1,-1, 1,1, 1, 1, -1,-1, 1,-1]
@@ -163,6 +93,7 @@
       out vec4 fragColor;
       uniform vec2 resolution;
       uniform float time;
+      
       #define PI 3.141592654
 
       vec2 rotate(vec2 p, float a) {
@@ -195,44 +126,28 @@
     </script>
   </shader-art>
 
-  <!-- Overlay -->
   <div class="overlay">
-    <!-- Age Gate -->
-    <div id="age-gate" class="age-gate">
+    <div class="age-gate">
       <h1>⚠️ You must be 18+ to enter</h1>
       <p>By clicking "Enter", you confirm you are 18 years of age or older.</p>
       <button onclick="enterSite()">Enter</button>
       <button onclick="leaveSite()">Leave</button>
     </div>
-
-    <!-- Main Content -->
-    <div id="main-content">
-      <img src="my-site-links-pfp.jpg" alt="Profile Picture" class="profile-pic" />
-      <h1>CHANELDEMONBLAZE</h1>
-      <div class="links">
-        <a href="https://onlyfans.com/chaneldemonblaze" target="_blank">ONLYFANS</a>
-        <a href="https://instagram.com/chaneldem0nblaze/" target="_blank">INSTAGRAM</a>
-        <a href="https://www.tiktok.com/@chaneldemonblaze" target="_blank">TIKTOK</a>
-      </div>
-    </div>
   </div>
 
-  <!-- ShaderArt Script -->
   <script type="module">
     import { ShaderArt } from 'https://cdn.skypack.dev/shader-art';
     ShaderArt.register();
   </script>
 
-  <!-- Site Logic -->
   <script>
     function enterSite() {
-      const ageGate = document.getElementById("age-gate");
-      const main = document.getElementById("main-content");
-      ageGate.classList.add("fade-out");
-      setTimeout(() => {
-        ageGate.style.display = "none";
-        main.classList.add("show");
-      }, 1000);
+      const link = "https://www.chaneldemonblaze.com/links.html";
+      try {
+        window.open(link, "_blank"); // Force open outside Instagram browser
+      } catch {
+        window.location.href = link; // Fallback
+      }
     }
 
     function leaveSite() {
@@ -241,4 +156,3 @@
   </script>
 </body>
 </html>
-
