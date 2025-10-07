@@ -33,7 +33,6 @@
 
     .links-container {
       background: rgba(0, 0, 0, 0.6);
-      border: 2px solid red;
       border-radius: 10px;
       padding: 40px 20px;
       max-width: 400px; width: 90%;
@@ -51,9 +50,10 @@
 
 
     h1 {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2rem);
       margin-bottom: 20px;
       text-shadow: 0 0 10px red;
+      word-break: break-word;
     }
 
     a.link-btn {
@@ -81,6 +81,29 @@
       margin-top: 20px;
       font-size: 0.8rem;
       opacity: 0.7;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      .profile-pic {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+      }
+
+      .links-container {
+        padding: 20px 15px;
+      }
+
+      a.link-btn {
+        font-size: 1rem;
+        padding: 10px 0;
+        width: 90%;
+      }
+
+      footer {
+        font-size: 0.7rem;
+      }
     }
   </style>
 </head>
